@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+
+{% block title %}INICIO{% endblock %}
+{% block content %}
+
+    <div class="container">
+    <center>
+        <img src="{{ url_for("static", filename="images/titulo.png") }}">
+        <br><br><br><br><br><br>
+        <form action="{{ url_for("iniciarjuego") }}" method="post">
+            <H1><button class="btn btn-warning btn-lg" type="submit" name="empezar" value="1">EMPEZAR JUEGO</button></H1>
+            <H1><button class="btn btn-warning btn-lg" type="submit" name="records" value="1">RECORDS</button></H1>
+        </form>
+
+
+
+
+
+
+    </center>
+    </div>
+{% endblock %}

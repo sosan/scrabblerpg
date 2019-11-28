@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="background">
+
+			<div class="Rectangle2"><img src="../static/images/map/Rectangle2.png"></div>
+			<div class="Rectangle2copy"><img src="../static/images/map/Rectangle2copy.png"></div>
+			<div class="Rectangle2copy2"><img src="../static/images/map/Rectangle2copy2.png"></div>
+			<div class="Rectangle1copy"><img src="../static/images/map/Rectangle1copy.png"></div>
+			<div class="Rectangle1copy3"><img src="../static/images/map/Rectangle1copy3.png"></div>
+			<div class="Rectangle1copy4"><img src="../static/images/map/Rectangle1copy4.png"></div>
+			<div class="Rectangle1copy5"><img src="../static/images/map/Rectangle1copy5.png"></div>
+
+
+        {% for i in range(1, nivel|int) %}
+            {% if i < nivel %}
+                {% set nombreclase = "shape1_fase{0}".format(i) %}
+                <div class="{{ nombreclase }}"><img src="../static/images/map/Shape1.png"></div>
+            {% endif %}
+        {% endfor %}
+
+        <div class="Shape2"><img src="../static/images/map/Shape2.png"></div>
+        {% set niveldibu = "shape3_fase{0}". format(nivel) %}
+        <div class="{{ niveldibu }}"><img src="../static/images/map/Shape3.png"></div>
+        {% set nombreclaseboton = "boton_luchar_nivel{0}". format(nivel) %}
+        <form method="post" action="{{ url_for("iniciarjuego") }}">
+            <button type="submit" class="btn btn-success {{ nombreclaseboton }}" name="lucharnivel" value="{{ nivel }}">LUCHAR</button>
+        </form>
+    </div>
+
+{#<form method="post" action="{{ url_for("iniciarjuego") }}">#}
+{#<button type="submit" name="subir" value="1">SUBIR NIVEL</button>#}
+{##}
+{#</form>#}
+
+</div>
+
+{% endblock %}

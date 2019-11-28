@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block content %}
+    
+
+<h1 class="text-center">RONDA {{ session["ronda"] + 1 }}</h1>
+
+<div class="container">
+<center>
+<form action="{{ url_for("recibirDatos_mostrarjuego") }}" method="post">
+    {% for i in range(0, letraspulsadas|length) %}
+        {% if correcto == True %}
+            <button class="btn btn-warning btn-lg" type="submit" name="quitarletra" value="{{ i }}" >{{ letraspulsadas[i][0] }}</button>
+        {% else %}
+            <button class="btn btn-lg" type="submit" name="quitarletra" value="{{ i }}">{{ letraspulsadas[i][0] }}</button>
+        {% endif %}
+    {% endfor %}
+    {% if correcto == True %}
+        <button class="btn-success btn-lg" type="submit" name="nuevaronda" value="{{ session["ronda"] }}">SMASH!</button>
+    {% endif %}
+</form>
+{{ session["puntuacion"] }}
+</center>
+</div>
+
+
+
+    <br><br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-5">
+            <div class="pull-right">
+                <img src="{{ url_for("static", filename="images/player.png") }}">
+                <BR>
+                <div class="pull-left">
+                   
+                    ====================
+                    <br>vidaPlayer: {{ vidaplayer }}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <div class="text-center">VS</div>
+        </div>
+        <div class="col-lg-5">
+            <img src="{{ url_for("static", filename="images/enemigos/enemigo{0}.png".format(imagenenemigo)) }}">
+            <BR>
+            <div class="pull-left">====================
+            <br>vidaEnemigo: {{ vidaenemigo }}
+
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+
+<br>
+
+<div class="container">
+<center>
+<form action="{{ url_for("recibirDatos_mostrarjuego") }}" method="POST">
+
+    {% for i in range(0, letras|length) %}
+        {% if letras[i][1] == True %}
+            <button class="btn btn-danger btn-lg" type="submit" name="opcionletra" value="{{ i }}" disabled>
+                    {{ letras[i][0] }}</button>
+        {% else %}
+            <button class="btn btn-success btn-lg" type="submit" name="opcionletra" value="{{ i }}">{{ letras[i][0] }}</button>
+        {% endif %}
+        {% if loop.index == 5 or loop.index == 10 or loop.index == 15 %}
+            <br><br>
+        {% endif %}
+    {% endfor %}
+</form>
+</center>
+</div>
+
+
+
+{% endblock %}
+
+{#        {% set vars = {'foo': False} %}#}
+
+{#        {% for i in range(0, letraspulsadas|length) %}#}
+{##}
+{#            {% if letraspulsadas[i] == letra %}#}
+{#                {% if vars.update({'foo': True}) %} {% endif %}#}
+{#                    <button class="btn btn-danger btn-lg" type="submit" name="opcionletra" value="{{ letraspulsadas[i] }}" disabled>#}
+{#                    {{ letraspulsadas[i] }}</button>#}
+{##}
+{#                {% break %}#}
+{#            {% endif %}#}
+
+{#        {% endfor %}#}
+
+{#        {% if vars.foo == False %}#}
+{##}
+{#        {% endif %}#}
