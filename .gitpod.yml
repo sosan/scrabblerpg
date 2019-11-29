@@ -1,16 +1,19 @@
 image:
-  file: .gitpod.dockerfile
-
-# List the ports you want to expose and what to do when they are served. See https://www.gitpod.io/docs/43_config_ports/
+  file: .gitpod.Dockerfile
 ports:
-- port: 5000
-
-# List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/44_config_start_tasks/
+    - port: 5000
+      onOpen: open-preview
 tasks:
-- init: pip3 install -r requirements.txt
-- command: pip3 install -r requirements.txt 
-  command: export FLASK_APP=main.py
-  command: export FLASK_ENV=development
-  command: export FLASK_DEBUG=1
-  command: python3 -m flask run
-  command: gp preview $(gp url 5000)
+    - init: >
+        python3 -m venv venv
+        source venv/bin/activate
+        pip3 install -r requirements.txt
+        mysql -u root -e "CREATE DATABASE example";
+        
+    - command: >
+        source venv/bin/activate
+        export FLASK_APP=main.py
+        export FLASK_ENV=development
+        export FLASK_DEBUG=1
+        python3 -m flask run
+        gp preview $(gp url 5000)
