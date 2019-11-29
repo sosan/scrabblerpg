@@ -5,8 +5,7 @@ ports:
       onOpen: open-preview
 tasks:
     - init: python3 -m venv venv;
-
-    # - command: source venv/bin/activate
+      command: source venv/bin/activate
     #   command: pip3 install -r requirements.txt
     #   command: mysql -u root -e "CREATE DATABASE example";
     #   command: source venv/bin/activate
