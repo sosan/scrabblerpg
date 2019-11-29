@@ -8,7 +8,6 @@ ports:
 # List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/44_config_start_tasks/
 tasks:
 - init: pip3 install -r requirements.txt
-
   command: export FLASK_APP=main.py
   command: export FLASK_ENV=development
   command: export FLASK_DEBUG=1
