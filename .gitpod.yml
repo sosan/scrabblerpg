@@ -6,11 +6,11 @@ ports:
 tasks:
     - init: >
         python3 -m venv venv;
-        
-    - command: source venv/bin/activate
-      command: pip3 install -r requirements.txt
-      command: mysql -u root -e "CREATE DATABASE example";
-      command: source venv/bin/activate
-      command: export FLASK_APP=main.py && export FLASK_ENV=development && export FLASK_DEBUG=1
-      command: python3 -m flask run
-      command: gp preview $(gp url 5000)
+
+    # - command: source venv/bin/activate
+    #   command: pip3 install -r requirements.txt
+    #   command: mysql -u root -e "CREATE DATABASE example";
+    #   command: source venv/bin/activate
+    #   command: export FLASK_APP=main.py && export FLASK_ENV=development && export FLASK_DEBUG=1
+    #   command: python3 -m flask run
+    #   command: gp preview $(gp url 5000)
