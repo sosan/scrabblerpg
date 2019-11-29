@@ -2,6 +2,11 @@ image:
   file: .gitpod.dockerfile
 
 tasks:
-  - init: pip3 install -r requirements.txt
-  - command: python3 -m flask run
-  - command: gp preview $(gp url 5000)
+  - init: 
+    pip3 install -r requirements.txt
+    export FLASK_APP=main.py
+    export FLASK_ENV=development
+    export FLASK_DEBUG=1
+  
+  command: python3 -m flask run
+  command: gp preview $(gp url 5000)
