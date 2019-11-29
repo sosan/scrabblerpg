@@ -4,10 +4,7 @@ ports:
     - port: 5000
       onOpen: open-preview
 tasks:
-    - init: >
-        python3 -m venv venv;
-    - command: source venv/bin/activate
-      command: pip3 install -r requirements.txt
+    - init: python3 -m venv venv;
 
     # - command: source venv/bin/activate
     #   command: pip3 install -r requirements.txt
