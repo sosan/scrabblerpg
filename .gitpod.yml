@@ -1,0 +1,6 @@
+image:
+  file: .gitpod.dockerfile
+
+tasks:
+  - command: python3 -m flask run
+  - command: gp preview $(gp url 5000)
