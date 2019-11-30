@@ -9998,3 +9998,4 @@ INSERT INTO scrable.palabras (id, palabra) VALUES (9987, 'fuiste');
 INSERT INTO scrable.palabras (id, palabra) VALUES (9988, 'galileo');
 INSERT INTO scrable.palabras (id, palabra) VALUES (9989, 'juanito');
 INSERT INTO scrable.palabras (id, palabra) VALUES (9990, 'normalizacion');
+INSERT INTO scrable.palabras (id, palabra) VALUES (9991, 'temario');
