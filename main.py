@@ -25,7 +25,7 @@ app.secret_key = "secrett"
 bootstrap = Bootstrap(app)
 
 manScrabble = Manager_Scrable()
-manScrabble.conectardb(host="127.0.0.1", user="root",
+manScrabble.conectardb(host="localhost", user="jose",
                        password="jose", db="scrable")
 app.jinja_env.add_extension("jinja2.ext.loopcontrols")
 
