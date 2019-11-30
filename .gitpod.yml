@@ -6,7 +6,7 @@ ports:
 tasks:
     - init: >
         pip3 install -r requirements.txt;
-      command: export FLASK_APP=main.py
-      command: export FLASK_ENV=development
-      command: export FLASK_DEBUG=1
-      command: python3 -m flask run
+    command: export FLASK_APP=main.py
+    command: export FLASK_ENV=development
+    command: export FLASK_DEBUG=1
+    command: python3 -m flask run
