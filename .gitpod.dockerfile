@@ -3,20 +3,20 @@ FROM buildpack-deps:disco
 ### base ###
 RUN yes | unminimize \
     && apt-get install -yq \
-        asciidoctor \
-        bash-completion \
-        build-essential \
-        htop \
-        jq \
-        less \
-        locales \
-        man-db \
-        nano \
-        software-properties-common \
-        sudo \
-        vim \
-        multitail \
-        lsof \
+    asciidoctor \
+    bash-completion \
+    build-essential \
+    htop \
+    jq \
+    less \
+    locales \
+    man-db \
+    nano \
+    software-properties-common \
+    sudo \
+    vim \
+    multitail \
+    lsof \
     && locale-gen en_US.UTF-8 \
     && mkdir /var/lib/apt/dazzle-marks \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
@@ -40,7 +40,8 @@ RUN sudo echo "Running 'sudo' for Gitpod: success"
 # create .bashrc.d folder and source it in the bashrc
 RUN mkdir /home/gitpod/.bashrc.d && \
     (echo; echo "for i in \$(ls \$HOME/.bashrc.d/*); do source \$i; done"; echo) >> /home/gitpod/.bashrc
-	
+
+
 ### python ####
 LABEL dazzle/layer=lang-python
 LABEL dazzle/test=tests/lang-python.yaml
@@ -48,17 +49,16 @@ USER gitpod
 ENV PATH=$HOME/.pyenv/bin:$HOME/.pyenv/shims:$PATH
 RUN curl -fsSL https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash \
     && { echo; \
-        echo 'eval "$(pyenv init -)"'; \
-        echo 'eval "$(pyenv virtualenv-init -)"'; } >> /home/gitpod/.bashrc.d/60-python \
-    # && pyenv install 2.7.16 \
+    echo 'eval "$(pyenv init -)"'; \
+    echo 'eval "$(pyenv virtualenv-init -)"'; } >> /home/gitpod/.bashrc.d/60-python \
     && pyenv install 3.7.4 \
     && pyenv global 3.7.4 \
     && pip3 install --upgrade pip \
     && pip3 install virtualenv pipenv pylint rope flake8 autopep8 pep8 pylama pydocstyle bandit notebook python-language-server[all]==0.25.0 \
     && rm -rf /tmp/*
 # Gitpod will automatically add user site under `/workspace` to persist your packages.
-# ENV PYTHONUSERBASE=/workspace/.pip-modules \
-#    PIP_USER=yes
+ENV PYTHONUSERBASE=/workspace/.pip-modules \
+    PIP_USER=yes
 
 
 

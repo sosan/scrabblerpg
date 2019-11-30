@@ -5,6 +5,14 @@ ports:
       onOpen: open-preview
 tasks:
     - init: >
-        python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt;
-    - command: python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt;
-      command: export FLASK_APP=main.py && export FLASK_ENV=development && export FLASK_DEBUG=1 && python3 -m flask run
+        python3 -m venv venv;
+        source venv/bin/activate;
+        pip3 install -r requirements.txt;
+    - command: >
+        python3 -m venv venv;
+        source venv/bin/activate;
+        pip3 install -r requirements.txt;
+        export FLASK_APP=main.py;
+        export FLASK_ENV=development;
+        export FLASK_DEBUG=1;
+        python3 -m flask run
