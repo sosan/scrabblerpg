@@ -4,11 +4,12 @@ ports:
     - port: 5000
       onOpen: open-preview
 tasks:
-    - init: python3 -m venv venv;
+    - init: >
+        python3 -m venv venv;
+        source venv/bin/activate;
+        pip3 install -r requirements.txt;
+      command: mysql -u root -e "CREATE DATABASE example";
       command: source venv/bin/activate
-    #   command: pip3 install -r requirements.txt
-    #   command: mysql -u root -e "CREATE DATABASE example";
-    #   command: source venv/bin/activate
-    #   command: export FLASK_APP=main.py && export FLASK_ENV=development && export FLASK_DEBUG=1
-    #   command: python3 -m flask run
-    #   command: gp preview $(gp url 5000)
+      command: export FLASK_APP=main.py && export FLASK_ENV=development && export FLASK_DEBUG=1
+      command: python3 -m flask run
+      command: gp preview $(gp url 5000)
