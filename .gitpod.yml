@@ -5,4 +5,8 @@ ports:
       onOpen: open-preview
 tasks:
     - init: >
-        pip install -r requirements.txt;
+        pip3 install -r requirements.txt;
+      command: export FLASK_APP=main.py
+      command: export FLASK_ENV=development
+      command: export FLASK_DEBUG=1
+      command: python3 -m flask run
